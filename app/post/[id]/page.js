@@ -1,3 +1,5 @@
+// Your page can remain a Client Component to use hooks like useState and useEffect.
+"use client";
 // app/post/[id]/page.js
 
 import { useState, useEffect } from "react";
@@ -35,8 +37,6 @@ export async function generateStaticParams() {
   }
 }
 
-// Your page can remain a Client Component to use hooks like useState and useEffect.
-"use client";
 
 export default function PostPage({ params }) {
   const [post, setPost] = useState(null);
