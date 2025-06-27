@@ -32,7 +32,7 @@ export default function EditPostPage({ params }) {
         setFormData({
           title: data.title,
           content: data.content,
-          status: data.published  === true ? "published" : "draft",
+          status: data.published === true ? "published" : "draft",
         })
       } catch (err) {
         setError(err.message)
@@ -52,7 +52,7 @@ export default function EditPostPage({ params }) {
 
     try {
       const token = localStorage.getItem("token")
-      const data = await apiRequest(`/posts/${postId}`, {
+      await apiRequest(`/posts/${postId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -65,7 +65,7 @@ export default function EditPostPage({ params }) {
         }),
       })
 
-        router.push("/")
+      router.push("/")
       toast("Post updated successfully")
     } catch (err) {
       setError(err.message)

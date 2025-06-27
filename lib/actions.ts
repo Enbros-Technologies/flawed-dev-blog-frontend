@@ -1,7 +1,6 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { cookies } from "next/headers"
 import { apiRequest } from "@/lib/apiRequest"
 
 export async function deletePost(postId: string, token?: string) {
