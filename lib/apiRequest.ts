@@ -1,5 +1,4 @@
-//@ts-ignore
-export async function apiRequest<T = any>(
+export async function apiRequest<T = unknown>(
   endpoint: string,
   options: RequestInit = {}
 ): Promise<T> {
@@ -16,9 +15,8 @@ export async function apiRequest<T = any>(
   const data = await response.json()
 
   if (!response.ok) {
-    const error = new Error(data.message || "API request failed");
-    //@ts-ignore
-    (error as any).status = response.status
+    const error = new Error(data.message || "API request failed") as Error & { status?: number }
+    error.status = response.status
     throw error
   }
 
